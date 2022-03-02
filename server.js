@@ -21,8 +21,8 @@ server.listen(3000,'192.168.3.105' || 'localhost', function(){  //necesario para
     console.log('backend iniciando con el process :'+ process.pid+' y con el port '+ port)   //necesario para crear una conexion
 })                                                              //necesario para crear una conexion
 
-app.get('/', (req, res) => { 
-    res.send('Ruta raiz del backend')
+app.get('/', (req, res) => {            //para ver en postman la pagina
+    res.send('Ruta raiz del backend')   //para ver en postman la pagina
 })
 
 //Error handler
