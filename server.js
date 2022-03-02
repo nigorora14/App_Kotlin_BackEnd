@@ -25,6 +25,10 @@ app.get('/', (req, res) => {            //para ver en postman la pagina
     res.send('Ruta raiz del backend')   //para ver en postman la pagina
 })
 
+app.get('/test', (req, res) => {        //para ver en postman la pagina
+    res.send('Ruta test')               //para ver en postman la pagina
+})
+
 //Error handler
 app.use((err, req, res, next) => {
     console.log(err)
