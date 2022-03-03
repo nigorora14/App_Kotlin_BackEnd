@@ -2,4 +2,20 @@ elegir una carpeta y entrar con git bash y crear proyecto backend
     npm init
     MIT
 
-entrar a la carpeta y escribir npm i express
+entrar a la carpeta y escribir 
+npm i express
+npm i http
+npm i cors
+npm i morgan
+npm i pg-promise
+mpm i bluebird
+
+agregar despues del password del config
+",
+    ssl: {
+        rejectUnauthorized: false
+    }
+"
+copiar
+`
+=>
