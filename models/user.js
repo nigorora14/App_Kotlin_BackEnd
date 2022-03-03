@@ -8,8 +8,8 @@ User.getAll = () => {
 }
 
 User.create = (user) => {
-    const sql = `INSERT INTO USERS (EMAIL, NAME, LASTNAME, PHONE, IMAGE, CREATE_AT,UPDATE_AT)
-    VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING ID`
+    const sql = `INSERT INTO USERS (EMAIL, NAME, LASTNAME, PHONE, IMAGE,PASSWORD, CREATE_AT,UPDATE_AT)
+    VALUES($1,$2,$3,$4,$5,$6,$7,$8) RETURNING ID`
 
     return db.oneOrNone(sql, [
         user.email,
@@ -17,6 +17,7 @@ User.create = (user) => {
         user.lastname,
         user.phone,
         user.image,
+        user.password,
         new Date(),
         new Date()
     ])

@@ -1,0 +1,9 @@
+agregar dependencias para las peticiones http
+implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+implementation 'com.google.code.gson:gson:2.8.6'
+implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+si hay error por permisos ir al manifest y agregar
+linea 4 -- <uses-permission android:name="android.permission.INTERNET"/>
+linea 5 -- <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+linea 14 -- android:usesCleartextTraffic="true">

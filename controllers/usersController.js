@@ -23,7 +23,9 @@ module.exports = {
             return res.status(201).json({
                 success: true, 
                 message: 'El registro se realizo Correctamente',
-                data: data.id
+                data: { 
+                    'id': data.id
+                }
             })
         } catch (error) {
             console.log(`Error: ${error}`)
