@@ -5,6 +5,8 @@ const server = http.createServer(app)                           //necesario para
 
 const logger = require('morgan')
 const cors = require('cors')
+const passport = require('passport') // para el jwt 
+
 const users = require('./routes/usersRoutes') //importando el js donde estan las rutas de las apis
 
 const port = process.env.PORT || 3000                           //necesario para crear una conexion
@@ -13,7 +15,12 @@ app.use(express.json())                   //para parsear la respuesta que resiva
 app.use(express.urlencoded({              //para parsear la respuesta que resivamos en formato json
     extended: true                        //para parsear la respuesta que resivamos en formato json
 }))                                       //para parsear la respuesta que resivamos en formato json
-app.use(cors())
+app.use(cors())                             //para el jwt
+app.use(passport.initialize())              //para el jwt
+app.use(passport.session())                 //para el jwt
+require("./config/passport")(passport)      //para el jwt                                     
+
+
 app.disable('x-powered-by')         //para la seguridad
 
 users(app) //llamando a las rutas.......................................

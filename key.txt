@@ -9,6 +9,10 @@ npm i cors
 npm i morgan
 npm i pg-promise
 mpm i bluebird
+npm i bcryptjs //para encrytar pass
+npm i passport-jwt
+npm i passport | cambiar a esta version luego npm i
+npm i jsonwebtoken
 
 agregar despues del password del config
 ",
