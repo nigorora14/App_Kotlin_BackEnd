@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs') // para comparar contraseñas
 //const passport = require('passport')
 const jwt = require('jsonwebtoken') // para el token
 const keys = require('../config/keys')
+const Rol = require('../models/rol')
 
 module.exports = {
     async getAll(req, res, next){
@@ -22,15 +23,30 @@ module.exports = {
     async register(req, res, next){
         try {
             const user = req.body // captura lo que el cliente envia mediante parametros
-            const data = await User.create(user) //espera la sentencia sql
+            const data = await User.create(user) //espera la sentencia sql que devolvera el id
 
-            return res.status(201).json({
-                success: true, 
-                message: 'El registro se realizo Correctamente',
-                data: { 
-                    'id': data.id
+            await Rol.create(data.id, 1) // asignar rol por defecto 1-CLIENTE
+
+            //se crea el token
+            const token = jwt.sign({ id: data.id, email: data.email}, keys.secretOrKey,{
+                // expiresIn:
+                })
+
+                const myData = { // myData que se le va retornar al frontend para almacenarlo en el token
+                    id: data.id,
+                    name: user.name,
+                    lastname: user.lastname,
+                    email: user.email,
+                    phone: user.phone,
+                    image: user.image,
+                    session_token: `JWT ${token}`
                 }
-            })
+
+                return res.status(201).json({
+                    success: true, 
+                    message: 'El registro se realizo Correctamente',
+                    data: myData
+                })
         } catch (error) {
             console.log(`Error: ${error}`)
             return res.status(501).json({

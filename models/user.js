@@ -25,7 +25,7 @@ User.create = async (user) => {
         new Date()
     ])
 }
-
+//buscar por email
 User.findByEmail = (email) => {
     const sql = `
     SELECT id,email,name,lastname,image,phone,password,session_token 
